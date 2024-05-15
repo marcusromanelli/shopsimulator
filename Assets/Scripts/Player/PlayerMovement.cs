@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     public delegate void OnPlayerMoved(Vector2 direction);
@@ -13,10 +14,11 @@ public class PlayerMovement : MonoBehaviour
 
 
     private Vector2 lastTargetDirection;
+    private Rigidbody2D rigidbody;
 
-    void Start()
+    void Awake()
     {
-        
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
         position += target * speed;
 
-        transform.position = position;
+        rigidbody.MovePosition(position);
 
         onPlayerMoved?.Invoke(target);
     }
