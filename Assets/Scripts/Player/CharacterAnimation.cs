@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static PlayerMovement;
 
 public class CharacterAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private bool invertSpriteOnLeft;
+    [SerializeField] private bool outputDebug;
 
 
     Vector2 lastDirection;
@@ -26,6 +23,9 @@ public class CharacterAnimation : MonoBehaviour
     void OnPlayerMoved(Vector2 direction)
     {
         lastDirection = direction;
+
+        if(outputDebug)
+        Debug.Log("Setting" + true + " " + direction);
 
         animator.SetBool("Walking", true);
         animator.SetFloat("XSpeed", direction.x);
@@ -52,6 +52,8 @@ public class CharacterAnimation : MonoBehaviour
     }
     void OnPlayerStoppedMoving()
     {
+        if (outputDebug)
+            Debug.Log("Setting" + false);
         animator.SetBool("Walking", false);
     }
 }

@@ -1,12 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.U2D;
-using static PlayerMovement;
 
 [ExecuteInEditMode]
 public class ShirtsAnimation : MonoBehaviour
@@ -20,12 +15,12 @@ public class ShirtsAnimation : MonoBehaviour
     }
 
     public const int maxColumnCount = 16;
-    public const int maxHairCount = 64;
+    public const int maxShirtsCount = 64;
 
     public const string hairSpritePrefix = "Shirts_";
 
 
-    [SerializeField, Range(0, maxHairCount)] private int shirtIndex;
+    [SerializeField, Range(0, maxShirtsCount)] private int shirtIndex;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteAtlas shirtSpriteAtlas;
@@ -44,10 +39,10 @@ public class ShirtsAnimation : MonoBehaviour
     {
         lastDirection = direction;
 
-        LoadHair();
+        LoadShirt();
     }
 
-    void LoadHair()
+    void LoadShirt()
     {
         var spriteName = GetSpriteName(lastDirection, shirtIndex);
 

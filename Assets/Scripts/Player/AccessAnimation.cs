@@ -1,22 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.U2D;
-using static PlayerMovement;
 
 [ExecuteInEditMode]
 public class AccessAnimation : MonoBehaviour
 {
     public const int maxColumnCount = 8;
-    public const int maxHairCount = 18;
+    public const int maxAccCount = 18;
 
     public const string hairSpritePrefix = "Accessories_";
 
 
-    [SerializeField, Range(0, maxHairCount)] private int accessoryIndex;
+    [SerializeField, Range(0, maxAccCount)] private int accessoryIndex;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteAtlas accessorySpriteAtlas;
@@ -34,10 +29,10 @@ public class AccessAnimation : MonoBehaviour
     {
         lastDirection = direction;
 
-        LoadHair();
+        LoadAccess();
     }
 
-    void LoadHair()
+    void LoadAccess()
     {
         var spriteName = GetSpriteName(lastDirection, accessoryIndex);
 
