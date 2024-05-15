@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 344951847}
   - component: {fileID: 344951848}
   - component: {fileID: 344951849}
+  - component: {fileID: 344951850}
   m_Layer: 0
   m_Name: Pants
   m_TagString: Untagged
@@ -358,24 +359,52 @@ MonoBehaviour:
   playerMovement: {fileID: 531329220}
   spriteRenderer: {fileID: 344951847}
   pantsSpriteAtlas: {fileID: 100100200, guid: 827e62a9ccb465b478bd019dc572c755, type: 3}
-  animation: {fileID: 344951849}
+  animator: {fileID: 344951849}
   offset: {x: 0, y: 0.02}
---- !u!111 &344951849
-Animation:
+  animationData:
+    upIdle: {fileID: 7400000, guid: 0943e0eb22f9c4b49a67e0b0c1bca5d1, type: 2}
+    downIdle: {fileID: 7400000, guid: 168b82bf512a610489a73f73e947f9fe, type: 2}
+    rightIdle: {fileID: 7400000, guid: 16de0fe10a19a0d4aaec7cfd446a45ba, type: 2}
+    upWalk: {fileID: 7400000, guid: 0943e0eb22f9c4b49a67e0b0c1bca5d1, type: 2}
+    downWalk: {fileID: 7400000, guid: 8c7e12e4902d68840a112933e3d74935, type: 2}
+    rightWalk: {fileID: 7400000, guid: bcc3186271efa494e8085988cc2ff138, type: 2}
+--- !u!95 &344951849
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344951844}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 0}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 21730b94a75be7c41b4d471392567646, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &344951850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344951844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20ef13bb10ea4046a182d6d50e6146d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 344951849}
+  playerMovement: {fileID: 531329220}
+  invertSpriteOnLeft: 0
+  outputDebug: 1
 --- !u!213 &405370462
 Sprite:
   m_ObjectHideFlags: 0
@@ -1189,6 +1218,7 @@ MonoBehaviour:
   animator: {fileID: 531329218}
   playerMovement: {fileID: 531329220}
   invertSpriteOnLeft: 1
+  outputDebug: 0
 --- !u!1 &1080932103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,6 +1425,7 @@ MonoBehaviour:
   animator: {fileID: 1166109558}
   playerMovement: {fileID: 531329220}
   invertSpriteOnLeft: 0
+  outputDebug: 0
 --- !u!95 &1166109558
 Animator:
   serializedVersion: 5
