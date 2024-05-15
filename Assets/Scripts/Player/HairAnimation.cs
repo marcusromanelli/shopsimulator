@@ -1,45 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.U2D;
 using static PlayerMovement;
 
 [ExecuteInEditMode]
 public class HairAnimation : MonoBehaviour
 {
-    [SerializeField] private int hairIndex;
-    [SerializeField] private AnimationClip animationClipReference;
+    public const int maxHairCount = 15;
+    public const string hairSpritePrefix = "Hairs_";
 
-    public bool Run;
+
+    [SerializeField, Range(0, maxHairCount)] private int hairIndex;
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteAtlas hairSpriteAtlas;
+
+
+    private int lastSelectedHairIndex;
 
     Vector2 lastDirection;
     private void Awake()
     {
+        playerMovement.onPlayerMoved += OnPlayerMoved;
     }
 
-    void Update()
+    void OnPlayerMoved(Vector2 direction)
     {
-        if (!Run)
-            return;
+        lastDirection = direction;
 
-        AnimationClip animClip = new AnimationClip();
-        animClip.frameRate = 30;   // FPS
+        LoadHair();
+    }
 
-        EditorCurveBinding spriteBinding = new EditorCurveBinding();
-        spriteBinding.type = typeof(SpriteRenderer);
-        spriteBinding.path = "";
-        spriteBinding.propertyName = "m_Sprite";
+    void LoadHair()
+    {
+        var spriteName = GetSpriteName(lastDirection, hairIndex);
 
-     //   ObjectReferenceKeyframe[] spriteKeyFrames = new ObjectReferenceKeyframe[sprites.Length];
-     //   for (int i = 0; i < (sprites.Length); i++)
-     //   {
-     //       spriteKeyFrames *= new ObjectReferenceKeyframe(); *
-     //_ spriteKeyFrames *.time = i; _
-     //spriteKeyFrames_.value = sprites;
-     //   }
+        spriteRenderer.sprite = hairSpriteAtlas.GetSprite(spriteName);
+    }
+    string GetSpriteName(Vector2 direction, int hairIndex)
+    {
+        StringBuilder stringBuilder = new StringBuilder(hairSpritePrefix);
+        //Down hair = hairIndex
+        //Right hair = hairIndex + (maxHairCount)
+        //Up hair = hairIndex + (maxHairCount * 2)
+
+        if (direction.y != 0)
+        {
+            if(direction.y > 0)
+            {
+                lastSelectedHairIndex = hairIndex + (maxHairCount * 2);
+            }
+            else
+            {
+                lastSelectedHairIndex = hairIndex;
+            }
+            stringBuilder.Append(lastSelectedHairIndex);
+
+            return stringBuilder.ToString();
+        }
 
 
-        Run = false;
+        if(direction.x != 0)
+        {
+            lastSelectedHairIndex = hairIndex + (maxHairCount);
+
+            stringBuilder.Append(lastSelectedHairIndex);
+
+            return stringBuilder.ToString();
+        }
+
+        stringBuilder.Append(lastSelectedHairIndex);
+
+        return stringBuilder.ToString();
     }
 }

@@ -133,8 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2324271}
   - component: {fileID: 2324274}
-  - component: {fileID: 2324273}
-  - component: {fileID: 2324272}
+  - component: {fileID: 2324275}
   m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
@@ -157,42 +156,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 531329217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2324272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2324270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d20ef13bb10ea4046a182d6d50e6146d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2324273}
-  playerMovement: {fileID: 531329220}
-  invertSpriteOnLeft: 0
---- !u!95 &2324273
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2324270}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1241dc632aa0a4d42b8753280c5ffb1b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &2324274
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -245,6 +208,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2324275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2324270}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b7600fffa44974ba840c5f07c9eb4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hairIndex: 0
+  playerMovement: {fileID: 531329220}
+  spriteRenderer: {fileID: 2324274}
+  hairSpriteAtlas: {fileID: 100100200, guid: 989a8ffccfc2ea444af8661e6a36a87d, type: 3}
 --- !u!1 &198191494
 GameObject:
   m_ObjectHideFlags: 0
