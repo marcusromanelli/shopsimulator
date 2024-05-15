@@ -340,7 +340,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!213 &436648347
+--- !u!213 &490716664
 Sprite:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -736,9 +736,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1166109555}
   - {fileID: 2324271}
   - {fileID: 1080932104}
+  - {fileID: 1166109555}
   - {fileID: 1622512276}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -863,7 +863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1080932104}
   - component: {fileID: 1080932106}
-  - component: {fileID: 1080932105}
+  - component: {fileID: 1080932107}
   m_Layer: 0
   m_Name: Shirts
   m_TagString: Untagged
@@ -886,23 +886,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 531329217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1080932105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080932103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bfa2631a1441f24b8f08bdf54710970, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  accessoryIndex: 16
-  playerMovement: {fileID: 531329220}
-  spriteRenderer: {fileID: 1080932106}
-  accessorySpriteAtlas: {fileID: 100100200, guid: 493d58b805b5ad04c8f6d42756676d6c, type: 3}
-  offset: {x: 0, y: 0}
 --- !u!212 &1080932106
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -944,17 +927,37 @@ SpriteRenderer:
   m_SortingLayerID: -325307451
   m_SortingLayer: 4
   m_SortingOrder: 3
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1330080037}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.33}
+  m_Size: {x: 0.08, y: 0.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1080932107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080932103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf87ef02a2e26245b880afbf649818b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shirtIndex: 1
+  playerMovement: {fileID: 531329220}
+  spriteRenderer: {fileID: 1080932106}
+  shirtSpriteAtlas: {fileID: 100100200, guid: 493d58b805b5ad04c8f6d42756676d6c, type: 3}
+  offsets:
+    upOffset: {x: 0, y: 0}
+    downOffset: {x: 0, y: -0.02}
+    rightOffset: {x: 0, y: -0.01}
 --- !u!1 &1166109554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1032,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -325307451
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 1272953347, guid: 5a0ff394298391d4ba98f06c2644006a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1077,6 +1080,221 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!213 &1330080037
+Sprite:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shirts_0(Clone)
+  m_Rect:
+    serializedVersion: 2
+    x: 0
+    y: 600
+    width: 8
+    height: 8
+  m_Offset: {x: 0, y: 0}
+  m_Border: {x: 0, y: 0, z: 0, w: 0}
+  m_PixelsToUnits: 100
+  m_Pivot: {x: 0.5, y: 0.5}
+  m_Extrude: 1
+  m_IsPolygon: 0
+  m_AtlasName: 
+  m_PackingTag: 
+  m_RenderDataKey:
+    91316645bc611f34791bd703ecd4e749: 1872871044
+  m_AtlasTags:
+  - Shirts
+  m_SpriteAtlas: {fileID: 100100200, guid: 493d58b805b5ad04c8f6d42756676d6c, type: 3}
+  m_RD:
+    serializedVersion: 3
+    texture: {fileID: 2800000, guid: 91316645bc611f34791bd703ecd4e749, type: 3}
+    alphaTexture: {fileID: 0}
+    secondaryTextures: []
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      serializedVersion: 3
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 1
+        offset: 0
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 0ad723bd0ad7233d000000000ad7233d0ad7233d000000000ad723bd0ad723bd000000000ad7233d0ad723bd000000000000000000000000000000000000000000000000000000000000000000000000
+    m_Bindpose: []
+    textureRect:
+      serializedVersion: 2
+      x: 0
+      y: 600
+      width: 8
+      height: 8
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: -1, y: -1}
+    settingsRaw: 64
+    uvTransform: {x: 100, y: 4, z: 100, w: 604}
+    downscaleMultiplier: 1
+  m_AtlasRD:
+    serializedVersion: 3
+    texture: {fileID: 8711939763936270973, guid: 493d58b805b5ad04c8f6d42756676d6c, type: 3}
+    alphaTexture: {fileID: 0}
+    secondaryTextures: []
+    m_SubMeshes:
+    - serializedVersion: 2
+      firstByte: 0
+      indexCount: 6
+      topology: 0
+      baseVertex: 0
+      firstVertex: 0
+      vertexCount: 4
+      localAABB:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+    m_IndexBuffer: 000001000200020001000300
+    m_VertexData:
+      serializedVersion: 3
+      m_VertexCount: 4
+      m_Channels:
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 3
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 1
+        offset: 0
+        format: 0
+        dimension: 2
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      - stream: 0
+        offset: 0
+        format: 0
+        dimension: 0
+      m_DataSize: 80
+      _typelessdata: 0ad723bd0ad7233d000000000ad7233d0ad7233d000000000ad723bd0ad723bd000000000ad7233d0ad723bd000000000000583f00008c3e00005c3f00008c3e0000583f0000843e00005c3f0000843e
+    m_Bindpose: []
+    textureRect:
+      serializedVersion: 2
+      x: 432
+      y: 132
+      width: 8
+      height: 8
+    textureRectOffset: {x: 0, y: 0}
+    atlasRectOffset: {x: 432, y: -468}
+    settingsRaw: 67
+    uvTransform: {x: 100, y: 436, z: 100, w: 136}
+    downscaleMultiplier: 1
+  m_PhysicsShape:
+  - - {x: -0.04, y: 0.04}
+    - {x: -0.04, y: -0.04}
+    - {x: 0.04, y: -0.04}
+    - {x: 0.04, y: 0.04}
+  m_Bones: []
+  m_SpriteID: 89111d305fe46484ab8d5cfe3bef177c
 --- !u!1 &1622512275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,8 +1368,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -325307451
   m_SortingLayer: 4
-  m_SortingOrder: 4
-  m_Sprite: {fileID: 436648347}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 490716664}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1174,11 +1392,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfa2631a1441f24b8f08bdf54710970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accessoryIndex: 16
+  accessoryIndex: 8
   playerMovement: {fileID: 531329220}
   spriteRenderer: {fileID: 1622512278}
   accessorySpriteAtlas: {fileID: 100100200, guid: 4e629441b6b960d4c95409e1940ce575, type: 3}
-  offset: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
