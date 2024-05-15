@@ -20,7 +20,6 @@ public class AccessAnimation : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SpriteAtlas accessorySpriteAtlas;
-    [SerializeField] private Vector2 offset;
 
 
     private int lastSelectedAccIndex;
@@ -36,12 +35,6 @@ public class AccessAnimation : MonoBehaviour
         lastDirection = direction;
 
         LoadHair();
-    }
-
-    private void Update()
-    {
-        LoadHair();
-        transform.localPosition = offset;
     }
 
     void LoadHair()
