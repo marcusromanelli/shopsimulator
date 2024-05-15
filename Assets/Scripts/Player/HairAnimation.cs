@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Text;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.U2D;
-using static PlayerMovement;
 
 [ExecuteInEditMode]
 public class HairAnimation : MonoBehaviour
