@@ -10,7 +10,7 @@ using static PlayerMovement;
 [ExecuteInEditMode]
 public class HairAnimation : MonoBehaviour
 {
-    public const int maxHairCount = 15;
+    public const int maxHairCount = 16;
     public const string hairSpritePrefix = "Hairs_";
 
 
