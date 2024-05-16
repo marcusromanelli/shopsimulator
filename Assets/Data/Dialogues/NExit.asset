@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1946feaec865d344dabf0419b1c94973, type: 3}
+  m_Name: NExit
+  m_EditorClassIdentifier: 
+  NodeLinkDatas:
+  - BaseNodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de
+    TargetNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
+  - BaseNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
+    TargetNodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
+  - BaseNodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de
+    TargetNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
+  - BaseNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
+    TargetNodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
+  DialogueChoiceNodeDatas: []
+  DialogueNodeDatas:
+  - NodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
+    Position: {x: 35, y: 167}
+    DialogueNodePorts: []
+    AudioClips:
+    - languageEnum: 0
+      LanguageGenericType: {fileID: 0}
+    - languageEnum: 1
+      LanguageGenericType: {fileID: 0}
+    Character: {fileID: 11400000, guid: fbc5d1cfa040c2245b860b16638adee1, type: 2}
+    AvatarPos: 0
+    AvatarType: 0
+    TextType:
+    - languageEnum: 0
+      LanguageGenericType: I should not exit without purchasing some clothes!
+    - languageEnum: 1
+      LanguageGenericType: 
+    Duration: 2
+  EndNodeDatas:
+  - NodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
+    Position: {x: 305, y: 262}
+    EndNodeType: 0
+  StartNodeDatas:
+  - NodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de
+    Position: {x: -86, y: 113}
+    startID: 
+  TimerChoiceNodeDatas: []
+  EventNodeDatas: []
+  RandomNodeDatas: []
+  CommandNodeDatas: []
+  IFNodeDatas: []

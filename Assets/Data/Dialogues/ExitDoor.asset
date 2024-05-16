@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1946feaec865d344dabf0419b1c94973, type: 3}
+  m_Name: ExitDoor
+  m_EditorClassIdentifier: 
+  NodeLinkDatas:
+  - BaseNodeGuid: 7d43bd3c-1fff-4754-a5f6-b7f4d0886232
+    TargetNodeGuid: 7187faa9-3131-478a-916d-786974f7991c
+  - BaseNodeGuid: 22f599fe-bf89-4c1d-a11e-24846e378fe0
+    TargetNodeGuid: 77588522-c6e6-4be3-b062-6be63590a675
+  DialogueChoiceNodeDatas: []
+  DialogueNodeDatas:
+  - NodeGuid: 22f599fe-bf89-4c1d-a11e-24846e378fe0
+    Position: {x: 0, y: 0}
+    DialogueNodePorts: []
+    AudioClips:
+    - languageEnum: 0
+      LanguageGenericType: {fileID: 0}
+    - languageEnum: 1
+      LanguageGenericType: {fileID: 8300000, guid: 2d60e2dd402bc55429dd4f8444cc3ab1, type: 3}
+    Character: {fileID: 11400000, guid: fbc5d1cfa040c2245b860b16638adee1, type: 2}
+    AvatarPos: 0
+    AvatarType: 0
+    TextType:
+    - languageEnum: 0
+      LanguageGenericType: I should not exit here without some clothes!
+    - languageEnum: 1
+      LanguageGenericType: "Kim jeste\u015B?"
+    Duration: 0
+  EndNodeDatas:
+  - NodeGuid: 7187faa9-3131-478a-916d-786974f7991c
+    Position: {x: 0, y: 0}
+    EndNodeType: 0
+  - NodeGuid: 77588522-c6e6-4be3-b062-6be63590a675
+    Position: {x: 309, y: 1}
+    EndNodeType: 0
+  StartNodeDatas:
+  - NodeGuid: 9d113ae3-aa9f-4cb8-9bab-6dc4df886d32
+    Position: {x: 0, y: 0}
+    startID: 
+  - NodeGuid: 7d43bd3c-1fff-4754-a5f6-b7f4d0886232
+    Position: {x: -161, y: 1}
+    startID: 
+  TimerChoiceNodeDatas: []
+  EventNodeDatas: []
+  RandomNodeDatas: []
+  CommandNodeDatas: []
+  IFNodeDatas: []
