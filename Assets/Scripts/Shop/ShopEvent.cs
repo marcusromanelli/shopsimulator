@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Event/Shop")]
+[CreateAssetMenu(menuName = "Events/Shop")]
 public class ShopEvent : Event
 {
     [SerializeField] ShopCollection shopCollection;
@@ -13,8 +13,17 @@ public class ShopEvent : Event
 
     public override void Trigger(Action OnFinish)
     {
-        
+        base.Trigger(OnFinish);
+
+        ShopController.Instance.OpenShop(shopCollection);
+        ShopController.Instance.OnCloseShop.AddListener(OnFinishEvent);
     }
 
+    void OnFinishEvent()
+    {
+        onFinishEvent?.Invoke();
+
+        ShopController.Instance.OnCloseShop.RemoveListener(OnFinishEvent);
+    }
 
 }

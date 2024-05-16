@@ -3,10 +3,14 @@ using UnityEngine;
 
 public abstract class Event : ScriptableObject
 {
+    protected Action onFinish;
     protected PlayerController playerController;
     public virtual void Setup(PlayerController playerController)
     {
         this.playerController = playerController;
     }
-    public abstract void Trigger(Action OnFinish);
+    public virtual void Trigger(Action OnFinish)
+    {
+        this.onFinish = OnFinish;
+    }
 }

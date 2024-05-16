@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d274af0cf11272a438a6068d9135ca8d, type: 3}
+  m_Name: ShopEventCollection
+  m_EditorClassIdentifier: 
+  Events:
+  - {fileID: 11400000, guid: b3a8d457d4b7f0147a209fc7c1b323b7, type: 2}
+  - {fileID: 11400000, guid: 0c55f21fd289f974b8e9a0cf201c201d, type: 2}
