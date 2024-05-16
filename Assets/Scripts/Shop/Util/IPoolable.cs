@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface PoolableObject
+public interface IPoolable
 {
     void Setup();
     void OnEnabled();

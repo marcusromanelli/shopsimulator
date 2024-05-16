@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class GenericPool<T> where T: MonoBehaviour, PoolableObject
+public class GenericPool<T> where T: MonoBehaviour, IPoolable
 {
     private IObjectPool<T> m_Pool;
     private T m_Prefab;
