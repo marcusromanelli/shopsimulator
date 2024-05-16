@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa642dd4de40e54fad9e4ccc3c81adf, type: 3}
+  m_Script: {fileID: 11500000, guid: 772cf54a925dc9c46a930b57eaba6f86, type: 3}
   m_Name: BanRays
   m_EditorClassIdentifier: 
   icon: {fileID: -1096620573, guid: 726e5df0c58af864e92492f2105d5eb6, type: 3}
-  price: 50
-  name: BanRay Glasses (tm)
+  price:
+    currency: {fileID: 11400000, guid: 9779f4c9aee347b4f8e6599e5c5e220a, type: 2}
+    amount: 45
+  name: BanRays
   type: 0
-  itemId: 15
+  id: 95cda135-0db6-48d8-b1bb-97dc026c9338

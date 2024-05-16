@@ -9,19 +9,24 @@ public class ShopEvent : Event
 {
     [SerializeField] ShopCollection shopCollection;
 
-    private Action onFinishEvent;
-
     public override void Trigger(Action OnFinish)
     {
         base.Trigger(OnFinish);
 
-        ShopController.Instance.OpenShop(shopCollection);
+        if(shopCollection == null)
+        {
+            Debug.LogWarning("Shop Collection not valid. Skipping.");
+            OnFinishEvent();
+            return;
+        }
+
+        ShopController.Instance.OpenShop(shopCollection, playerController);
         ShopController.Instance.OnCloseShop.AddListener(OnFinishEvent);
     }
 
     void OnFinishEvent()
     {
-        onFinishEvent?.Invoke();
+        onFinish?.Invoke();
 
         ShopController.Instance.OnCloseShop.RemoveListener(OnFinishEvent);
     }

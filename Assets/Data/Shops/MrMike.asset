@@ -18,3 +18,8 @@ MonoBehaviour:
   salesPhrases:
   - Cha-Ching~!
   - Thaaank you!
+  - Pleasure doin' business!
+  notEnoughtMoneyPhrases:
+  - Uuuf. It appears you don't have the cash.
+  - Yeah, nice try. Cash only.
+  - Ops, not enough cash.

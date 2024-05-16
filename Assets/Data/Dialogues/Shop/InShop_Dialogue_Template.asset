@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1946feaec865d344dabf0419b1c94973, type: 3}
-  m_Name: InShop_Dialogue
+  m_Name: InShop_Dialogue_Template
   m_EditorClassIdentifier: 
   NodeLinkDatas:
   - BaseNodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de

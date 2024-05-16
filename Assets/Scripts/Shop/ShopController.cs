@@ -1,7 +1,13 @@
+using JetBrains.Annotations;
+using MEET_AND_TALK;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using static PlayerInventory;
 
 public class ShopController : Singleton<ShopController>
 {
@@ -11,31 +17,73 @@ public class ShopController : Singleton<ShopController>
     }
 
     public delegate bool CanPurchaseItem(ShopItem shopItem);
-    public delegate bool CouldNotPurchaseItem ();
+    public delegate void CouldNotPurchaseItem ();
+    public delegate int GetCurrencyAmount (string currencyId);
 
     [SerializeField] ShopView shopView;
+    [SerializeField] DialogueContainerSO dialogueObject;
 
     public UnityEvent OnCloseShop;
 
-    public void OpenShop(ShopCollection shopCollection)
+    private PlayerController playerController;
+    private ShopCollection shopCollection;
+
+    public void OpenShop(ShopCollection shopCollection, PlayerController playerController)
     {
-        shopView.Setup(shopCollection, CanPurchase, CouldNotPurchase);
+        this.shopCollection = shopCollection;
+
+        this.playerController = playerController;
+        this.playerController.OnCurrencyChanged.AddListener(UpdateCurrencyValue);
+
+
+        shopView.Setup(shopCollection, OnCanPurchase, OnCouldNotPurchase, OnGetCurrencyAmount);
 
         shopView.OnClosed.AddListener(OnClosedShop);
+        shopView.OnPurchased.AddListener(OnPurchasedItem);
     }
 
-    bool CanPurchase(ShopItem shopItem)
+    void UpdateCurrencyValue(string currencyId, int amount)
     {
-        return true;
+        shopView.UpdateCurrencyValue(currencyId, amount);
+    }
+    void OnPurchasedItem(ShopItem shopItem)
+    {
+        Debug.Log("Purchased item!");
+
+        ShowDialogue(shopCollection.GetSeller().GetRandomSalesPhrase());
+
+        playerController.AddItem(shopItem.GetId());
     }
 
-    bool CouldNotPurchase()
+    int OnGetCurrencyAmount(string currencyId)
     {
-        return true;
+        return playerController.GetCurrencyAmount(currencyId);
+    }
+
+    bool OnCanPurchase(ShopItem shopItem)
+    {
+        var costData = shopItem.GetCostData();
+
+        return playerController.GetCurrencyAmount(costData) >= costData.amount;
+    }
+
+    void OnCouldNotPurchase()
+    {
+        ShowDialogue(shopCollection.GetSeller().GetRandomNotEnoughtMoneyPhrase());
     }
 
     void OnClosedShop()
     {
         OnCloseShop?.Invoke();
+    }
+    void UpdateShopDialogue(string text)
+    {
+        dialogueObject.DialogueNodeDatas.First().TextType[0].LanguageGenericType = text;
+    }
+    void ShowDialogue(string text)
+    {
+        UpdateShopDialogue(text);
+
+        DialogueManager.Instance.StartDialogue(dialogueObject);
     }
 }

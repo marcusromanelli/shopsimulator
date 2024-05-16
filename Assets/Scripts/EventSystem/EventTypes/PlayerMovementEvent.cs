@@ -10,13 +10,13 @@ public class PlayerMovementEvent : Event
 
     public override void Trigger(Action OnFinish)
     {
-        onFinishEvent = OnFinish;
+        base.Trigger(OnFinish);
 
         playerController.ForceMovement(targetOffsetMovement, OnFinishMovement);
     }
 
     void OnFinishMovement()
     {
-        onFinishEvent?.Invoke();
+        onFinish?.Invoke();
     }
 }

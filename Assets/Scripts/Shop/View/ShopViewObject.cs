@@ -8,6 +8,7 @@ public class ShopViewObject : MonoBehaviour, PoolableObject
     [SerializeField] Image itemImage;
     [SerializeField] TMP_Text itemName;
     [SerializeField] TMP_Text itemValue;
+    [SerializeField] Image currencyIcon;
     [SerializeField] Button button;
 
     public UnityEvent<ShopItem> OnClickPurchase;
@@ -22,7 +23,8 @@ public class ShopViewObject : MonoBehaviour, PoolableObject
     {
         itemImage.sprite = item.GetIcon();
         itemName.text = item.GetName();
-        itemValue.text = item.GetPrice().ToString();
+        itemValue.text = item.GetCostData().amount.ToString();
+        currencyIcon.sprite = item.GetCostData().currency.GetIcon();
 
         this.item = item;
     }

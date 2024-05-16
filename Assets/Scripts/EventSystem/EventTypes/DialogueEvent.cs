@@ -10,11 +10,9 @@ public class DialogueEvent : Event
 {
     [SerializeField] DialogueContainerSO dialogue;
 
-    private Action onFinishEvent;
-
     public override void Trigger(Action OnFinish)
     {
-        onFinishEvent = OnFinish;
+        base.Trigger(OnFinish);
 
         var manager = DialogueManager.Instance;
 
@@ -27,6 +25,6 @@ public class DialogueEvent : Event
     {
         DialogueManager.Instance.EndDialogueEvent.RemoveListener(OnFinishDialogue);
 
-        onFinishEvent?.Invoke();
+        onFinish?.Invoke();
     }
 }

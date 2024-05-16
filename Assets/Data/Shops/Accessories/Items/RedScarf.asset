@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aa642dd4de40e54fad9e4ccc3c81adf, type: 3}
+  m_Script: {fileID: 11500000, guid: 772cf54a925dc9c46a930b57eaba6f86, type: 3}
   m_Name: RedScarf
   m_EditorClassIdentifier: 
   icon: {fileID: 1308101707, guid: 726e5df0c58af864e92492f2105d5eb6, type: 3}
-  price: 15
+  price:
+    currency: {fileID: 11400000, guid: abf193d1ec634274c8ada1a271b9e0c4, type: 2}
+    amount: 15
   name: Red Scarf
   type: 0
-  itemId: 14
+  id: 3c016884-30de-4e03-a13a-988092a12487

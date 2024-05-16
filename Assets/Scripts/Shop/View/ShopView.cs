@@ -2,8 +2,10 @@ using MEET_AND_TALK;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using static PlayerInventory;
 using static ShopController;
 
 [RequireComponent(typeof(CanvasGroup))]
@@ -11,7 +13,7 @@ public class ShopView : MonoBehaviour
 {
     [SerializeField] ShopNPCContainerView npcContainerView;
     [SerializeField] ShopViewItemContainer itemContainerView;
-    [SerializeField] DialogueContainerSO dialogueObject;
+    [SerializeField] ShopViewCurrencyContainer currencyContainer;
 
     public UnityEvent<ShopItem> OnPurchased;
     public UnityEvent OnClosed;
@@ -20,17 +22,19 @@ public class ShopView : MonoBehaviour
     private CanvasGroup canvasGroup;
     private CanPurchaseItem canPurchaseItem;
     private CouldNotPurchaseItem couldNotPurchaseItem;
+    private GetCurrencyAmount getCurrencyAmount;
 
     private void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void Setup(ShopCollection shopCollection, CanPurchaseItem canPurchaseItem, CouldNotPurchaseItem couldNotPurchaseItem)
+    public void Setup(ShopCollection shopCollection, CanPurchaseItem canPurchaseItem, CouldNotPurchaseItem couldNotPurchaseItem, GetCurrencyAmount getCurrencyAmount)
     {
         this.shopCollection = shopCollection;
         this.canPurchaseItem = canPurchaseItem;
         this.couldNotPurchaseItem = couldNotPurchaseItem;
+        this.getCurrencyAmount = getCurrencyAmount;
 
         Initialize();
     }
@@ -40,11 +44,17 @@ public class ShopView : MonoBehaviour
         CloseWindow();
     }
 
+    public void UpdateCurrencyValue(string currencyId, int amount)
+    {
+        currencyContainer.UpdateCurrencyValue(currencyId, amount);
+    }
     void Initialize()
     {
         npcContainerView.Setup(shopCollection.GetSeller());
         itemContainerView.Setup(shopCollection.GetItems(), canPurchaseItem, couldNotPurchaseItem);
         itemContainerView.onPurchase.AddListener(OnItemPurchased);
+
+        currencyContainer.Setup(shopCollection.GetAcceptedCurrencies(), getCurrencyAmount);
 
         OpenWindow();
     }
@@ -65,15 +75,7 @@ public class ShopView : MonoBehaviour
 
     void OnItemPurchased(ShopItem shopItem)
     {
-        Debug.Log("Purchased item!");
-
-        UpdateDialogue();
-
-        DialogueManager.Instance.StartDialogue(dialogueObject);
+        OnPurchased?.Invoke(shopItem);
     }
 
-    void UpdateDialogue()
-    {
-        dialogueObject.DialogueNodeDatas.First().TextType[0].LanguageGenericType = shopCollection.GetSeller().GetRandomSalesPhrase();
-    }
 }

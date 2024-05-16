@@ -14,13 +14,13 @@ public class LockInputEvent : Event
 
     public override void Trigger(Action OnFinish)
     {
-        onFinishEvent = OnFinish;
+        base.Trigger(OnFinish);
 
         if (inputEnabled)
             playerController.EnableInput();
         else
             playerController.DisableInput();
 
-        onFinishEvent?.Invoke();
+        onFinish?.Invoke();
     }
 }

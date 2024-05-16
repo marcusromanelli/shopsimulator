@@ -256,6 +256,7 @@ MonoBehaviour:
   itemImage: {fileID: 6351903638576593214}
   itemName: {fileID: 2788152420896148941}
   itemValue: {fileID: 7502495653440704794}
+  currencyIcon: {fileID: 5293199497963341687}
   button: {fileID: 5181012239714483630}
   OnClickPurchase:
     m_PersistentCalls:

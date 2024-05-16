@@ -1,18 +1,32 @@
 using System;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using static PlayerInventory;
+using static ShopItem;
 
-[RequireComponent(typeof(PlayerInput)), RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerInput)), RequireComponent(typeof(PlayerMovement)), RequireComponent(typeof(PlayerInventory))]
 public class PlayerController : MonoBehaviour
 {
+    public UnityEvent<string, int> OnCurrencyChanged;
+
+
     [SerializeField] private TargetComponent targetComponent;
     PlayerInput playerInput;
     PlayerMovement playerMovement;
+    PlayerInventory playerInventory;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerInventory = GetComponent<PlayerInventory>();
+        playerInventory.OnCurrencyChanges.AddListener(OnCurrencyChanges);
+    }
+    private void OnCurrencyChanges(string currencyId, int amount)
+    {
+        OnCurrencyChanged?.Invoke(currencyId, amount);
     }
     public void DisableInput()
     {
@@ -40,5 +54,23 @@ public class PlayerController : MonoBehaviour
             return;
 
         targetComponent.InteractWithTarget(this);
+    }
+
+    public void AddItem(string itemId)
+    {
+        playerInventory.AddItem(itemId);
+    }
+
+    public void RemoveItem(string itemId)
+    {
+        playerInventory.RemoveItem(itemId);
+    }
+    public int GetCurrencyAmount(string currencyId)
+    {
+        return playerInventory.GetCurrencyAmount(currencyId);
+    }
+    public int GetCurrencyAmount(Cost costData)
+    {
+        return playerInventory.GetCurrencyAmount(costData);
     }
 }
