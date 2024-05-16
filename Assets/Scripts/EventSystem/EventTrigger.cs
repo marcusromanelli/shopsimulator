@@ -32,6 +32,8 @@ public class EventTrigger : MonoBehaviour
         if (isTriggering)
             return;
 
+        isTriggering = true;
+
         currentEventIndex = -1;
         playerController = obj.GetComponent<PlayerController>()
 ;
@@ -46,6 +48,7 @@ public class EventTrigger : MonoBehaviour
         
         if(nextEvent == null)
         {
+            isTriggering = false;
             OnFinish?.Invoke();
             return;
         }

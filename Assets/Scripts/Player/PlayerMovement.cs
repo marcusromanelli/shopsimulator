@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 lastTargetDirection;
     private Rigidbody2D rigidbody;
     private Vector3 lastDirection;
-    private Action onFinishForceMovement;
     private bool isForcingMovement;
 
     void Awake()
@@ -36,20 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         OnMove(lastTargetDirection);
-
-        CheckPositionChanged();
     }
-
-    void CheckPositionChanged()
-    {
-        if (rigidbody.velocity.magnitude > 0)
-            return;
-
-        onFinishForceMovement?.Invoke();
-        onFinishForceMovement = null;
-        isForcingMovement = false;
-    }
-
     public void OnReceivedMovement(InputAction.CallbackContext context)
     {
         if (isForcingMovement)
@@ -77,8 +65,23 @@ public class PlayerMovement : MonoBehaviour
     public void ForceMovement(Vector3 targetOffsetPosition, Action onFinish)
     {
         isForcingMovement = true;
-        lastTargetDirection = targetOffsetPosition;
-        this.onFinishForceMovement = onFinish;
+        StartCoroutine(DoForceMovement(targetOffsetPosition, speed, onFinish));
+    }
+
+    IEnumerator DoForceMovement(Vector3 targetOffsetPosition, float speed, Action onFinish)
+    {
+        var originalPosition = transform.position;
+        var targetPosition = transform.position + targetOffsetPosition;
+        var delta = targetPosition - originalPosition;
+
+        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        {
+            OnMove(delta);
+            yield return null;
+        }
+
+        onFinish?.Invoke();
+        isForcingMovement = false;
     }
     void OnMove(Vector3 target)
     {
@@ -99,6 +102,5 @@ public class PlayerMovement : MonoBehaviour
     void CalculateDirection(Vector3 newPosition, Vector3 lastPosition)
     {
         lastDirection = (newPosition - lastPosition).normalized;
-
     }
 }

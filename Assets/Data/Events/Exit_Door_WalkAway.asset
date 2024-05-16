@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70abb7d258132ae46a27b80d80c10dc3, type: 3}
   m_Name: Exit_Door_WalkAway
   m_EditorClassIdentifier: 
-  targetOffsetMovement: {x: 0, y: 4, z: 0}
+  targetOffsetMovement: {x: 0, y: 2, z: 0}
