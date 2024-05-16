@@ -14,8 +14,8 @@ public class TargetComponent : MonoBehaviour
     [SerializeField] private Grid gridComponent;
 
 
-    Vector3 lastPosition;
-    float lastMovement;
+    private Trigger contactTrigger; 
+    private float lastMovement;
     private void Awake()
     {
         playerMovement.onPlayerMoved += OnPlayerMoved;

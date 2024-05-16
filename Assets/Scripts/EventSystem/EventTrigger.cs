@@ -5,15 +5,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider2D))]
-public class EventTrigger : MonoBehaviour
+public class EventTrigger : Trigger
 {
-    [SerializeField] Event[] events;
-    [SerializeField] UnityEvent OnFinish;
-
     new private Collider2D collider;
-    private int currentEventIndex = 0;
-    private bool isTriggering;
-    private PlayerController playerController;
 
     void Awake()
     {
@@ -21,48 +15,10 @@ public class EventTrigger : MonoBehaviour
         collider.isTrigger = true;
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        TryTriggerEvents(collision.gameObject);
+        var playerController = collision.GetComponent<PlayerController>();
+
+        TryTriggerEvents(playerController);
     }
-
-    void TryTriggerEvents(GameObject obj)
-    {
-        if (isTriggering)
-            return;
-
-        isTriggering = true;
-
-        currentEventIndex = -1;
-        playerController = obj.GetComponent<PlayerController>()
-;
-        RunTriggerList();
-    }
-
-    void RunTriggerList()
-    {
-        currentEventIndex++;
-
-        var nextEvent = GetEvent(currentEventIndex);
-        
-        if(nextEvent == null)
-        {
-            isTriggering = false;
-            OnFinish?.Invoke();
-            return;
-        }
-
-        nextEvent.Setup(playerController);
-        nextEvent.Trigger(RunTriggerList);
-    }
-    Event GetEvent(int eventIndex)
-    {
-        if (eventIndex < 0 || eventIndex >= events.Length)
-            return null;
-
-        return events[eventIndex];
-    }
-
-
 }

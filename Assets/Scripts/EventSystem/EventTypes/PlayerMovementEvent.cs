@@ -1,9 +1,5 @@
-using MEET_AND_TALK;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Events/Player Movement")]
 public class PlayerMovementEvent : Event
