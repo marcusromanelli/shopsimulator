@@ -1,6 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-
+[RequireComponent (typeof(Collider2D))]
 public class TargetComponent : MonoBehaviour
 {
     [SerializeField] private bool vanishOnIdle;
@@ -12,12 +13,14 @@ public class TargetComponent : MonoBehaviour
     [SerializeField] private Animation animation;
     [SerializeField] private Vector3 playerOffet;
     [SerializeField] private Grid gridComponent;
+    [SerializeField] private Collider2D collider;
 
 
     private Trigger contactTrigger; 
     private float lastMovement;
     private void Awake()
     {
+        collider = GetComponent<Collider2D>();
         playerMovement.onPlayerMoved += OnPlayerMoved;
     }
 
@@ -63,5 +66,23 @@ public class TargetComponent : MonoBehaviour
         {
             animation.Play("FadeOut");
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        contactTrigger = collision.GetComponent<Trigger>();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        contactTrigger = null;
+    }
+
+    public void InteractWithTarget(PlayerController playerController)
+    {
+        if (contactTrigger == null)
+            return;
+
+        contactTrigger.TryTriggerEvents(playerController);
     }
 }

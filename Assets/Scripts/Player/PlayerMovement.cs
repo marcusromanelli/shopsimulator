@@ -38,12 +38,10 @@ public class PlayerMovement : MonoBehaviour
     {
         OnMove(lastTargetDirection);
     }
-    public void OnReceivedMovement(InputAction.CallbackContext context)
+    public void SetMovement(Vector2 targetMovement)
     {
         if (isForcingMovement)
             return;
-
-        var targetMovement = context.ReadValue<Vector2>();
 
         lastTargetDirection = targetMovement;
 
