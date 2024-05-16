@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using static ShopController;
 
-public class CurrencyDataObject : MonoBehaviour, PoolableObject
+public class CurrencyDataObject : MonoBehaviour, IPoolable
 {
     [SerializeField] Image currencyImage;
     [SerializeField] TMP_Text currencyAmount;   

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ShopViewObject : MonoBehaviour, PoolableObject
+public class ShopViewObject : MonoBehaviour, IPoolable
 {
     [SerializeField] Image itemImage;
     [SerializeField] TMP_Text itemName;

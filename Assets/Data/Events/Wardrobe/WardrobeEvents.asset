@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d274af0cf11272a438a6068d9135ca8d, type: 3}
-  m_Name: ShopEventCollection
+  m_Name: WardrobeEvents
   m_EditorClassIdentifier: 
   Events:
   - {fileID: 11400000, guid: ab267b3af6fb6d241973addb5c5b50da, type: 2}
-  - {fileID: 11400000, guid: b3a8d457d4b7f0147a209fc7c1b323b7, type: 2}
-  - {fileID: 11400000, guid: 0c55f21fd289f974b8e9a0cf201c201d, type: 2}
+  - {fileID: 11400000, guid: 7f31cff08e4f7884e87c66a46cdde47b, type: 2}
   - {fileID: 11400000, guid: c43c8765e25629b438ef3cde95dfd47d, type: 2}
-  - {fileID: 11400000, guid: bfab0cb9e40da2549a84639180cb668f, type: 2}

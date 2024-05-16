@@ -19,19 +19,14 @@ public class CurrencyContainerView : MonoBehaviour
 
     private List<string> currentCurrencies;
 
-    private void Awake()
-    {
-        currencyPool = new GenericPool<CurrencyDataObject>(currencyPrefab);
-        currentCurrencies = new List<string>();
-    }
     public void Setup(List<CurrencyData> acceptedCurrencies, GetCurrencyAmount onGetCurrencyAmount)
     {
         this.onGetCurrencyAmount = onGetCurrencyAmount;
         Initialize(acceptedCurrencies, onGetCurrencyAmount);
     }
-    public void UpdateCurrencyValue(CurrencyData currencyData, int amount) {
-
-        if (!currentCurrencies.Contains(currencyData.GetId()))
+    public void UpdateCurrencyValue(CurrencyData currencyData, int amount)
+    {
+        if (!GetCurrentCurrencies().Contains(currencyData.GetId()))
         {
             InstantiateCurrencyObject(currencyData, amount);
             return;
@@ -58,7 +53,7 @@ public class CurrencyContainerView : MonoBehaviour
     {
         if(currencyObjects != null)
             foreach (var currencyObject in currencyObjects)
-                currencyPool.Release(currencyObject);
+                GetPool().Release(currencyObject);
     }
 
     private void InstantiateCurrencyObject(CurrencyData currency, GetCurrencyAmount onGetCurrencyAmount)
@@ -68,16 +63,32 @@ public class CurrencyContainerView : MonoBehaviour
 
     private void InstantiateCurrencyObject(CurrencyData currency, int startAmount)
     {
-        if (currentCurrencies.Contains(currency.GetId()))
+        if (GetCurrentCurrencies().Contains(currency.GetId()))
             return;
 
-        var obj = currencyPool.Get();
+        var obj = GetPool().Get();
 
         obj.Setup(currency, startAmount);
         obj.transform.SetParent(currencyContainer);
         obj.transform.localScale = Vector3.one;
         currencyObjects.Add(obj);
 
-        currentCurrencies.Add(currency.GetId());
+        GetCurrentCurrencies().Add(currency.GetId());
+    }
+
+    GenericPool<CurrencyDataObject> GetPool()
+    {
+        if (currencyPool == null)
+            currencyPool = new GenericPool<CurrencyDataObject>(currencyPrefab);
+
+        return currencyPool;
+    }
+
+    List<string> GetCurrentCurrencies()
+    {
+        if (currentCurrencies == null)
+            currentCurrencies  = new List<string> ();
+
+        return currentCurrencies;
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 using static ShopController;
 
 [CreateAssetMenu(menuName = "Shop/Item")]
-public class ShopItem : ScriptableObject
+public class ShopItem : ScriptableObject, IIdentifiable
 {
     [Serializable]
     public struct Cost

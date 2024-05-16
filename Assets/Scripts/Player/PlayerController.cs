@@ -10,6 +10,7 @@ using static ShopItem;
 public class PlayerController : MonoBehaviour
 {
     public UnityEvent<CurrencyData, int> OnCurrencyChanged;
+    public UnityEvent OnInventoryClosed;
 
 
     [SerializeField] private TargetComponent targetComponent;
@@ -26,7 +27,7 @@ public class PlayerController : MonoBehaviour
         playerInventory.OnCurrencyChanges.AddListener(OnCurrencyChanges);
 
         playerHUD = GetComponent<PlayerHUD>();
-        playerHUD.Setup(CurrencyManager.Instance.GetCurrencies(), GetCurrencyAmount);
+        playerHUD.Setup(CurrencyManager.Instance.GetElements(), GetCurrencyAmount);
     }
     private void OnCurrencyChanges(CurrencyData currencyData, int amount)
     {
@@ -44,6 +45,21 @@ public class PlayerController : MonoBehaviour
         playerInput.ActivateInput();
     }
 
+    public void OpenInventory()
+    {
+        playerHUD.OpenInventory(playerInventory, GetItemData);
+        playerHUD.OnClosedInventory.AddListener(OnClosedInventory);
+    }
+
+    void OnClosedInventory()
+    {
+        OnInventoryClosed?.Invoke();
+    }
+
+    ShopItem GetItemData(string itemId)
+    {
+        return ItemManager.Instance.GetElementData(itemId);
+    }
     public void ForceMovement(Vector3 targetOffsetMovement, Action onFinish)
     {
         playerMovement.ForceMovement(targetOffsetMovement, onFinish);

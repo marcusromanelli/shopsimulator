@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="Currency")]
-public class CurrencyData : ScriptableObject
+public class CurrencyData : ScriptableObject, IIdentifiable
 {
     [SerializeField] Sprite icon;
     [SerializeField] string name;

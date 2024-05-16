@@ -93,7 +93,7 @@ public class PlayerInventory : MonoBehaviour
     CurrencyData GetCurrencyData(string currencyId)
     {
         if (!cachedCurrencyData.ContainsKey(currencyId))
-            cachedCurrencyData[currencyId] = CurrencyManager.Instance.GetCurrencyData(currencyId);
+            cachedCurrencyData[currencyId] = CurrencyManager.Instance.GetElementData(currencyId);
 
         return cachedCurrencyData[currencyId];
     }

@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 037cfe449515eb54ba0aaf69241c504a, type: 3}
-  m_Name: Rupee
+  m_Script: {fileID: 11500000, guid: 7ce2b9f7406ea984a9b12946ffa6e193, type: 3}
+  m_Name: Shop_Dialog_2
   m_EditorClassIdentifier: 
-  icon: {fileID: -2100209117, guid: 3bbd73cc82fa63c42a126c90c45a8e05, type: 3}
-  name: Rupee
-  id: 2b99b444-2b9b-4672-9bd9-fbefcbbba10d
+  dialogue: {fileID: 11400000, guid: 976c43b3cd9397e4491a92c9ed348a8f, type: 2}
