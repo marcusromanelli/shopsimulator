@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MEET_AND_TALK
 {
-    public class DialogueGetData : MonoBehaviour
+    public class DialogueGetData : Singleton<DialogueGetData>
     {
         [HideInInspector] public DialogueContainerSO dialogueContainer;
 
