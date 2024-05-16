@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 lastTargetDirection;
     private Rigidbody2D rigidbody;
     private Vector3 lastDirection;
+    private Action onFinishForceMovement;
+    private bool isForcingMovement;
 
     void Awake()
     {
@@ -33,10 +36,25 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         OnMove(lastTargetDirection);
+
+        CheckPositionChanged();
+    }
+
+    void CheckPositionChanged()
+    {
+        if (rigidbody.velocity.magnitude > 0)
+            return;
+
+        onFinishForceMovement?.Invoke();
+        onFinishForceMovement = null;
+        isForcingMovement = false;
     }
 
     public void OnReceivedMovement(InputAction.CallbackContext context)
     {
+        if (isForcingMovement)
+            return;
+
         var targetMovement = context.ReadValue<Vector2>();
 
         lastTargetDirection = targetMovement;
@@ -44,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         if (targetMovement == Vector2.zero)
             OnStoppedMovement();
     }
-    public void OnStoppedMovement()
+    void OnStoppedMovement()
     {
         onPlayerStoppedMoving?.Invoke();
     }
@@ -55,6 +73,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector3Int GetLastDirection()
     {
         return Vector3Int.FloorToInt(lastDirection);
+    }
+    public void ForceMovement(Vector3 targetOffsetPosition, Action onFinish)
+    {
+        isForcingMovement = true;
+        lastTargetDirection = targetOffsetPosition;
+        this.onFinishForceMovement = onFinish;
     }
     void OnMove(Vector3 target)
     {
