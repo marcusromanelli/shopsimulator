@@ -52,6 +52,7 @@ public class ShopController : Singleton<ShopController>
 
         ShowDialogue(shopCollection.GetSeller().GetRandomSalesPhrase());
 
+        playerController.RemoveCurrency(shopItem.GetCostData());
         playerController.AddItem(shopItem.GetId());
     }
 

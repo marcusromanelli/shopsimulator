@@ -15,6 +15,11 @@ public class PlayerInventory : MonoBehaviour
 
     private Dictionary<string, CurrencyData> cachedCurrencyData = new Dictionary<string, CurrencyData>();
 
+    private void Awake()
+    {
+        itemList = new List<string>();
+        currencyList = new Dictionary<string, int>();
+    }
     public void AddItem(string guid)
     {
         itemList.Add(guid);
@@ -41,7 +46,7 @@ public class PlayerInventory : MonoBehaviour
 
         var currencyData = GetCurrencyData(currencyId);
 
-        OnCurrencyChanges?.Invoke(currencyData, amount);
+        OnCurrencyChanges?.Invoke(currencyData, GetCurrencyAmount(currencyId));
     }
     public void RemoveCurrency(string currencyId, int amount)
     {
@@ -53,7 +58,7 @@ public class PlayerInventory : MonoBehaviour
 
         var currencyData = GetCurrencyData(currencyId);
 
-        OnCurrencyChanges?.Invoke(currencyData, amount);
+        OnCurrencyChanges?.Invoke(currencyData, GetCurrencyAmount(currencyId));
     }
 
     public bool HasCurrency(string currencyId, int value)

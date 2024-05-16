@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d274af0cf11272a438a6068d9135ca8d, type: 3}
+  m_Name: PlantRuppeeEventCollection
+  m_EditorClassIdentifier: 
+  Events:
+  - {fileID: 11400000, guid: ab267b3af6fb6d241973addb5c5b50da, type: 2}
+  - {fileID: 11400000, guid: 71fbef1a6215ff8459b5f03eccfdb1f0, type: 2}
+  - {fileID: 11400000, guid: 7286b2b375e71db428923eb55ceaf98e, type: 2}
+  - {fileID: 11400000, guid: c43c8765e25629b438ef3cde95dfd47d, type: 2}

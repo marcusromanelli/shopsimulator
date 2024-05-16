@@ -71,6 +71,22 @@ public class PlayerController : MonoBehaviour
     {
         playerInventory.RemoveItem(itemId);
     }
+
+    public void AddCurrency(CurrencyData currencyData, int amount)
+    {
+        playerInventory.AddCurrency(currencyData.GetId(), amount);
+    }
+
+    public void RemoveCurrency(CurrencyData currencyData, int amount)
+    {
+        playerInventory.RemoveCurrency(currencyData.GetId(), amount);
+    }
+
+    public void RemoveCurrency(Cost costData)
+    {
+        playerInventory.RemoveCurrency(costData.currency.GetId(), costData.amount);
+    }
+
     public int GetCurrencyAmount(string currencyId)
     {
         return playerInventory.GetCurrencyAmount(currencyId);
