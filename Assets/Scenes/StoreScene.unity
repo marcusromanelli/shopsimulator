@@ -1874,7 +1874,7 @@ Transform:
   m_GameObject: {fileID: 531329215}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.42, y: -5.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2051,9 +2051,9 @@ GameObject:
   m_Component:
   - component: {fileID: 579508414}
   - component: {fileID: 579508412}
-  - component: {fileID: 579508415}
+  - component: {fileID: 579508416}
   m_Layer: 0
-  m_Name: ExitInteraction
+  m_Name: ExitDoor_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2119,7 +2119,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &579508415
+--- !u!114 &579508416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2128,11 +2128,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 579508411}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d82098cfcbf4c42a03eaa68d913fe6, type: 3}
+  m_Script: {fileID: 11500000, guid: 15fb1ddf0342e0d46b529cc9bdb3579f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 6750716294730123916}
-  dialogue: {fileID: 11400000, guid: 22130e4a2c2a5c943a3655aa0bb7ff61, type: 2}
+  events:
+  - {fileID: 11400000, guid: 672c35c0b32e796418628205ab781fb0, type: 2}
+  - {fileID: 11400000, guid: 4f31264ccbd54c84280069b5fd4733db, type: 2}
+  OnFinish:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!222 &668079494
 CanvasRenderer:
   m_ObjectHideFlags: 0
