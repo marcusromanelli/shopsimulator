@@ -13,7 +13,7 @@ public class ShopView : MonoBehaviour
 {
     [SerializeField] ShopNPCContainerView npcContainerView;
     [SerializeField] ShopViewItemContainer itemContainerView;
-    [SerializeField] ShopViewCurrencyContainer currencyContainer;
+    [SerializeField] CurrencyContainerView currencyContainer;
 
     public UnityEvent<ShopItem> OnPurchased;
     public UnityEvent OnClosed;
@@ -44,9 +44,9 @@ public class ShopView : MonoBehaviour
         CloseWindow();
     }
 
-    public void UpdateCurrencyValue(string currencyId, int amount)
+    public void UpdateCurrencyValue(CurrencyData currencyData, int amount)
     {
-        currencyContainer.UpdateCurrencyValue(currencyId, amount);
+        currencyContainer.UpdateCurrencyValue(currencyData, amount);
     }
     void Initialize()
     {

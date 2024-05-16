@@ -23,6 +23,13 @@ public class CurrencyDataObject : MonoBehaviour, PoolableObject
 
         UpdateCurrencyValue(currency, startAmount);
     }
+    public void Setup(CurrencyData currency, int amount)
+    {
+        this.currency = currency;
+        var startAmount = amount;
+
+        UpdateCurrencyValue(currency, startAmount);
+    }
 
     public void UpdateCurrencyValue(CurrencyData currency, int amount)
     {

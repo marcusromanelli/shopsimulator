@@ -42,9 +42,9 @@ public class ShopController : Singleton<ShopController>
         shopView.OnPurchased.AddListener(OnPurchasedItem);
     }
 
-    void UpdateCurrencyValue(string currencyId, int amount)
+    void UpdateCurrencyValue(CurrencyData currencyData, int amount)
     {
-        shopView.UpdateCurrencyValue(currencyId, amount);
+        shopView.UpdateCurrencyValue(currencyData, amount);
     }
     void OnPurchasedItem(ShopItem shopItem)
     {

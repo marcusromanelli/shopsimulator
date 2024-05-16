@@ -6,16 +6,17 @@ using UnityEngine.InputSystem;
 using static PlayerInventory;
 using static ShopItem;
 
-[RequireComponent(typeof(PlayerInput)), RequireComponent(typeof(PlayerMovement)), RequireComponent(typeof(PlayerInventory))]
+[RequireComponent(typeof(PlayerInput)), RequireComponent(typeof(PlayerMovement)), RequireComponent(typeof(PlayerInventory)), RequireComponent(typeof(PlayerHUD))]
 public class PlayerController : MonoBehaviour
 {
-    public UnityEvent<string, int> OnCurrencyChanged;
+    public UnityEvent<CurrencyData, int> OnCurrencyChanged;
 
 
     [SerializeField] private TargetComponent targetComponent;
     PlayerInput playerInput;
     PlayerMovement playerMovement;
     PlayerInventory playerInventory;
+    PlayerHUD playerHUD;
 
     private void Awake()
     {
@@ -23,10 +24,15 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerInventory = GetComponent<PlayerInventory>();
         playerInventory.OnCurrencyChanges.AddListener(OnCurrencyChanges);
+
+        playerHUD = GetComponent<PlayerHUD>();
+        playerHUD.Setup(CurrencyManager.Instance.GetCurrencies(), GetCurrencyAmount);
     }
-    private void OnCurrencyChanges(string currencyId, int amount)
+    private void OnCurrencyChanges(CurrencyData currencyData, int amount)
     {
-        OnCurrencyChanged?.Invoke(currencyId, amount);
+        OnCurrencyChanged?.Invoke(currencyData, amount);
+
+        playerHUD.UpdateCurrencyValue(currencyData, amount);
     }
     public void DisableInput()
     {

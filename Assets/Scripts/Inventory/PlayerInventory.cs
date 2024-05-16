@@ -8,10 +8,12 @@ using static ShopItem;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public UnityEvent<string, int> OnCurrencyChanges;
+    public UnityEvent<CurrencyData, int> OnCurrencyChanges;
 
     private Dictionary<string, int> currencyList;
     private List<string> itemList;
+
+    private Dictionary<string, CurrencyData> cachedCurrencyData = new Dictionary<string, CurrencyData>();
 
     public void AddItem(string guid)
     {
@@ -37,7 +39,9 @@ public class PlayerInventory : MonoBehaviour
 
         SetCurrency(currencyId, current);
 
-        OnCurrencyChanges?.Invoke(currencyId, amount);
+        var currencyData = GetCurrencyData(currencyId);
+
+        OnCurrencyChanges?.Invoke(currencyData, amount);
     }
     public void RemoveCurrency(string currencyId, int amount)
     {
@@ -47,7 +51,9 @@ public class PlayerInventory : MonoBehaviour
 
         SetCurrency(currencyId, current);
 
-        OnCurrencyChanges?.Invoke(currencyId, amount);
+        var currencyData = GetCurrencyData(currencyId);
+
+        OnCurrencyChanges?.Invoke(currencyData, amount);
     }
 
     public bool HasCurrency(string currencyId, int value)
@@ -77,5 +83,13 @@ public class PlayerInventory : MonoBehaviour
     public int GetCurrencyAmount(Cost costData)
     {
         return GetCurrencyAmount(costData.currency.GetId());
+    }
+
+    CurrencyData GetCurrencyData(string currencyId)
+    {
+        if (!cachedCurrencyData.ContainsKey(currencyId))
+            cachedCurrencyData[currencyId] = CurrencyManager.Instance.GetCurrencyData(currencyId);
+
+        return cachedCurrencyData[currencyId];
     }
 }
