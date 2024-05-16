@@ -2132,8 +2132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events:
+  - {fileID: 11400000, guid: ab267b3af6fb6d241973addb5c5b50da, type: 2}
   - {fileID: 11400000, guid: 672c35c0b32e796418628205ab781fb0, type: 2}
   - {fileID: 11400000, guid: 4f31264ccbd54c84280069b5fd4733db, type: 2}
+  - {fileID: 11400000, guid: c43c8765e25629b438ef3cde95dfd47d, type: 2}
   OnFinish:
     m_PersistentCalls:
       m_Calls: []
