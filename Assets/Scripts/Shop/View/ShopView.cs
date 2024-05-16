@@ -1,5 +1,7 @@
+using MEET_AND_TALK;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using static ShopController;
@@ -9,6 +11,7 @@ public class ShopView : MonoBehaviour
 {
     [SerializeField] ShopNPCContainerView npcContainerView;
     [SerializeField] ShopViewItemContainer itemContainerView;
+    [SerializeField] DialogueContainerSO dialogueObject;
 
     public UnityEvent<ShopItem> OnPurchased;
     public UnityEvent OnClosed;
@@ -41,6 +44,7 @@ public class ShopView : MonoBehaviour
     {
         npcContainerView.Setup(shopCollection.GetSeller());
         itemContainerView.Setup(shopCollection.GetItems(), canPurchaseItem, couldNotPurchaseItem);
+        itemContainerView.onPurchase.AddListener(OnItemPurchased);
 
         OpenWindow();
     }
@@ -49,11 +53,27 @@ public class ShopView : MonoBehaviour
     {
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     void OpenWindow()
     {
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    void OnItemPurchased(ShopItem shopItem)
+    {
+        Debug.Log("Purchased item!");
+
+        UpdateDialogue();
+
+        DialogueManager.Instance.StartDialogue(dialogueObject);
+    }
+
+    void UpdateDialogue()
+    {
+        dialogueObject.DialogueNodeDatas.First().TextType[0].LanguageGenericType = shopCollection.GetSeller().GetRandomSalesPhrase();
     }
 }

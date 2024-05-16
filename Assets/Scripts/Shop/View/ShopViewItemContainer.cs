@@ -20,22 +20,30 @@ public class ShopViewItemContainer : MonoBehaviour
 
     private void Awake()
     {
-        shopItemPool = new GenericPool<ShopViewObject>();
+        shopItemPool = new GenericPool<ShopViewObject>(ShopItemPrefab);
         itemObjects = new List<ShopViewObject>();
     }
     public void Setup(ShopItem[] itemArray, CanPurchaseItem canPurchaseItem, CouldNotPurchaseItem couldNotPurchaseItem)
     {
         this.itemArray = itemArray;
+        this.canPurchaseItem = canPurchaseItem;
+        this.couldNotPurchaseItem = couldNotPurchaseItem;
 
         Initialize();
     }
-
+    public void Close()
+    {
+        foreach(var item in itemObjects)
+            shopItemPool.Release(item);
+    }
     void Initialize()
     {
         foreach (var item in itemArray)
         {
             var itemObj = shopItemPool.Get();
 
+            itemObj.transform.SetParent(ItemContainer);
+            itemObj.transform.localScale = Vector3.one;
             itemObj.Setup(item);
             itemObj.OnClickPurchase.AddListener(TryPurchase);
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa642dd4de40e54fad9e4ccc3c81adf, type: 3}
   m_Name: BanRays
   m_EditorClassIdentifier: 
-  icon: {fileID: -987923065, guid: 726e5df0c58af864e92492f2105d5eb6, type: 3}
+  icon: {fileID: -1096620573, guid: 726e5df0c58af864e92492f2105d5eb6, type: 3}
   price: 50
   name: BanRay Glasses (tm)
   type: 0

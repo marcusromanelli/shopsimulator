@@ -4,9 +4,11 @@ using UnityEngine.Pool;
 public class GenericPool<T> where T: MonoBehaviour, PoolableObject
 {
     private IObjectPool<T> m_Pool;
-    public GenericPool()
+    private T m_Prefab;
+    public GenericPool(T m_Prefab)
     {
         m_Pool = new LinkedPool<T>(_create, _get, _release, _destroy, true, 30);
+        this.m_Prefab = m_Prefab;
     }
 
     public T Get()
@@ -15,17 +17,17 @@ public class GenericPool<T> where T: MonoBehaviour, PoolableObject
     }
     public void Release(T obj)
     {
+        obj.transform.parent.SetParent(null);
         m_Pool.Release(obj);
     }
 
     T _create()
     {
-        var go = new GameObject("");
-        var ps = go.AddComponent<T>();
+        var go = GameObject.Instantiate(m_Prefab);
 
-        ps.Setup();
+        go.Setup();
 
-        return ps;
+        return go;
     }
     void _get(T obj)
     {

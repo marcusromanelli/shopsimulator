@@ -14,6 +14,8 @@ public class ShopNPCContainerView : MonoBehaviour
     }
     public void Setup(ShopSeller seller)
     {
+        this.seller = seller;
+
         avatar.sprite = this.seller.GetAvatar();
         description.text = this.seller.GetDescription();
     }
