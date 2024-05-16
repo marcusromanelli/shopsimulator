@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.U2D;
 
 [ExecuteInEditMode]
-public class AccessAnimation : MonoBehaviour
+public class AccessoryAnimation : MonoBehaviour
 {
     public const int maxColumnCount = 8;
     public const int maxAccCount = 18;
@@ -23,6 +23,13 @@ public class AccessAnimation : MonoBehaviour
     private void Awake()
     {
         playerMovement.onPlayerMoved += OnPlayerMoved;
+    }
+
+    public void EquipItem(ShopItem item)
+    {
+        accessoryIndex = item.GetInternalId();
+
+        LoadAccess();
     }
 
     void OnPlayerMoved(Vector2 direction)

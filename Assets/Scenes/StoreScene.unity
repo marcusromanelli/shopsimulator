@@ -3203,6 +3203,7 @@ MonoBehaviour:
   OnCurrencyChanges:
     m_PersistentCalls:
       m_Calls: []
+  accessAnimation: {fileID: 1622512279}
 --- !u!114 &531329227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3216,8 +3217,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyContainer: {fileID: 1148169762}
-  itemListView: {fileID: 1126689702}
+  inventoryView: {fileID: 1126689702}
   OnClosedInventory:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClickedItem:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &579508411
@@ -7056,7 +7060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfa2631a1441f24b8f08bdf54710970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accessoryIndex: 8
+  accessoryIndex: 0
   playerMovement: {fileID: 531329223}
   spriteRenderer: {fileID: 1622512278}
   accessorySpriteAtlas: {fileID: 100100200, guid: 4e629441b6b960d4c95409e1940ce575, type: 3}

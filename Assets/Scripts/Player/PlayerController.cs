@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
         playerHUD = GetComponent<PlayerHUD>();
         playerHUD.Setup(CurrencyManager.Instance.GetElements(), GetCurrencyAmount);
+        playerHUD.OnClickedItem.AddListener(OnEquipItem);
     }
     private void OnCurrencyChanges(CurrencyData currencyData, int amount)
     {
@@ -49,6 +50,11 @@ public class PlayerController : MonoBehaviour
     {
         playerHUD.OpenInventory(playerInventory, GetItemData);
         playerHUD.OnClosedInventory.AddListener(OnClosedInventory);
+    }
+
+    void OnEquipItem(ShopItem item)
+    {
+        playerInventory.EquipItem(item);
     }
 
     void OnClosedInventory()

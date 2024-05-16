@@ -1,13 +1,7 @@
-using JetBrains.Annotations;
 using MEET_AND_TALK;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using static PlayerInventory;
 
 public class ShopController : Singleton<ShopController>
 {

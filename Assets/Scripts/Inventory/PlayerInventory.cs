@@ -8,10 +8,26 @@ using static ShopItem;
 
 public class PlayerInventory : MonoBehaviour
 {
+    [Serializable]
+    public struct InventorySlot
+    {
+        public string itemId;
+    }
+    [Serializable]
+    public struct InventoryData
+    {
+        public InventorySlot Accessory;
+        public InventorySlot Shirt;
+        public InventorySlot Hair;
+    }
+
     public UnityEvent<CurrencyData, int> OnCurrencyChanges;
+
+    [SerializeField] private AccessoryAnimation accessAnimation;
 
     private Dictionary<string, int> currencyList;
     private List<string> itemList;
+    private InventoryData inventory;
 
     private Dictionary<string, CurrencyData> cachedCurrencyData = new Dictionary<string, CurrencyData>();
 
@@ -19,6 +35,8 @@ public class PlayerInventory : MonoBehaviour
     {
         itemList = new List<string>();
         currencyList = new Dictionary<string, int>();
+
+        accessAnimation = GetComponentInChildren<AccessoryAnimation>();
     }
     public void AddItem(string guid)
     {
@@ -96,5 +114,15 @@ public class PlayerInventory : MonoBehaviour
             cachedCurrencyData[currencyId] = CurrencyManager.Instance.GetElementData(currencyId);
 
         return cachedCurrencyData[currencyId];
+    }
+
+    public void EquipItem(ShopItem item)
+    {
+        switch (item.GetType())
+        {
+            case ShopController.ItemType.Accessory:
+                accessAnimation.EquipItem(item);
+                break;
+        }
     }
 }
