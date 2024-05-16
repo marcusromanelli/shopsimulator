@@ -4,11 +4,14 @@ using UnityEngine;
 public class TargetComponent : MonoBehaviour
 {
     [SerializeField] private bool vanishOnIdle;
+    [SerializeField] private float minMovement;
     [SerializeField] private float idleTimeToVanishInSeconds;
     [SerializeField] private float movementMultiplier;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Animation animation;
+    [SerializeField] private Vector3 playerOffet;
+    [SerializeField] private Grid gridComponent;
 
 
     Vector3 lastPosition;
@@ -35,11 +38,12 @@ public class TargetComponent : MonoBehaviour
     }
     void OnPlayerMoved(Vector2 target)
     {
-        Vector3 movementDirection = playerMovement.transform.position - lastPosition;
+        var position = playerMovement.GetPosition();
+        var bearing = playerMovement.GetLastDirection();
 
-        transform.position = playerMovement.transform.position + (movementDirection * movementMultiplier);
+        var newPosition = position + bearing;
 
-        lastPosition = playerMovement.transform.position;
+        transform.position = gridComponent.CellToWorld(newPosition);
 
         lastMovement = Time.time;
 
