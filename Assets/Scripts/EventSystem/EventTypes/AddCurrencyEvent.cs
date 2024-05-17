@@ -11,12 +11,12 @@ public class AddCurrencyEvent : Event
     [SerializeField] CurrencyData currencyData;
     [SerializeField] int amount;
 
-    public override void Trigger(Action OnFinish)
+    public override void Trigger(Action<int> OnFinish)
     {
         base.Trigger(OnFinish);
 
         playerController.AddCurrency(currencyData, amount);
 
-        onFinish?.Invoke();
+        onFinish?.Invoke(-1);
     }
 }

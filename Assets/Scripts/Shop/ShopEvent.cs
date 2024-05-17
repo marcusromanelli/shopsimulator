@@ -9,7 +9,7 @@ public class ShopEvent : Event
 {
     [SerializeField] ShopCollection shopCollection;
 
-    public override void Trigger(Action OnFinish)
+    public override void Trigger(Action<int> OnFinish)
     {
         base.Trigger(OnFinish);
 
@@ -26,7 +26,7 @@ public class ShopEvent : Event
 
     void OnFinishEvent()
     {
-        onFinish?.Invoke();
+        onFinish?.Invoke(-1);
 
         ShopController.Instance.OnCloseShop.RemoveListener(OnFinishEvent);
     }

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class Trigger : MonoBehaviour
 {
     [SerializeField] EventCollection events;
-    [SerializeField] UnityEvent OnFinish;
+    [SerializeField] UnityEvent<int> OnFinish;
 
     private int currentEventIndex = 0;
     private bool isTriggering;
@@ -20,10 +20,10 @@ public class Trigger : MonoBehaviour
         currentEventIndex = -1;
         this.playerController = playerController;
 ;
-        RunTriggerList();
+        RunTriggerList(-1);
     }
 
-    void RunTriggerList()
+    void RunTriggerList(int lastEventReturnedValue)
     {
         currentEventIndex++;
 
@@ -32,11 +32,11 @@ public class Trigger : MonoBehaviour
         if(nextEvent == null)
         {
             isTriggering = false;
-            OnFinish?.Invoke();
+            OnFinish?.Invoke(-1);
             return;
         }
 
-        nextEvent.Setup(playerController);
+        nextEvent.Setup(lastEventReturnedValue, playerController);
         nextEvent.Trigger(RunTriggerList);
     }
     Event GetEvent(int eventIndex)

@@ -12,7 +12,7 @@ public class LockInputEvent : Event
 
     private Action onFinishEvent;
 
-    public override void Trigger(Action OnFinish)
+    public override void Trigger(Action<int> OnFinish)
     {
         base.Trigger(OnFinish);
 
@@ -21,6 +21,6 @@ public class LockInputEvent : Event
         else
             playerController.DisableInput();
 
-        onFinish?.Invoke();
+        onFinish?.Invoke(-1);
     }
 }

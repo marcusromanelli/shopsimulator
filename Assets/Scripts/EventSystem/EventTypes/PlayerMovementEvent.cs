@@ -8,7 +8,7 @@ public class PlayerMovementEvent : Event
 
     private Action onFinishEvent;
 
-    public override void Trigger(Action OnFinish)
+    public override void Trigger(Action<int> OnFinish)
     {
         base.Trigger(OnFinish);
 
@@ -17,6 +17,6 @@ public class PlayerMovementEvent : Event
 
     void OnFinishMovement()
     {
-        onFinish?.Invoke();
+        onFinish?.Invoke(-1);
     }
 }

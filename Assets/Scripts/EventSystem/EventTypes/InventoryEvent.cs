@@ -4,18 +4,18 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Events/Inventory")]
 public class InventoryEvent : Event
 {
-    public override void Trigger(Action OnFinish)
+    public override void Trigger(Action<int> OnFinish)
     {
         base.Trigger(OnFinish);
 
         playerController.OpenInventory();
-        playerController.OnInventoryClosed.AddListener(OnFinishDialogue);
+        playerController.OnInventoryClosed.AddListener(this.OnFinish);
     }
 
-    void OnFinishDialogue()
+    void OnFinish()
     {
-        playerController.OnInventoryClosed.RemoveListener(OnFinishDialogue);
+        playerController.OnInventoryClosed.RemoveListener(OnFinish);
 
-        onFinish?.Invoke();
+        onFinish?.Invoke(-1);
     }
 }
