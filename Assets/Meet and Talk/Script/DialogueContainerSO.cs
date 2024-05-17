@@ -104,6 +104,7 @@ namespace MEET_AND_TALK
     [System.Serializable]
     public class EndNodeData : BaseNodeData
     {
+        public int ReturnValue;
         public EndNodeType EndNodeType;
     }
 

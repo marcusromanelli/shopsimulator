@@ -131,7 +131,8 @@ namespace MEET_AND_TALK
             {
                 NodeGuid = _node.nodeGuid,
                 Position = _node.GetPosition().position,
-                EndNodeType = _node.EndNodeType
+                EndNodeType = _node.EndNodeType,
+                ReturnValue = _node.ReturnValue
             };
             return nodeData;
         }
@@ -184,6 +185,7 @@ namespace MEET_AND_TALK
                 EndNode tempNode = graphView.CreateEndNode(node.Position);
                 tempNode.nodeGuid = node.NodeGuid;
                 tempNode.EndNodeType = node.EndNodeType;
+                tempNode.ReturnValue = node.ReturnValue;
 
                 tempNode.LoadValueInToField();
                 graphView.AddElement(tempNode);

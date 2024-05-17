@@ -16,11 +16,46 @@ MonoBehaviour:
   - BaseNodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de
     TargetNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
   - BaseNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
+    TargetNodeGuid: dc58941c-68ea-4038-a437-3b9e243e033f
+  - BaseNodeGuid: dc58941c-68ea-4038-a437-3b9e243e033f
     TargetNodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
-  DialogueChoiceNodeDatas: []
+  - BaseNodeGuid: dc58941c-68ea-4038-a437-3b9e243e033f
+    TargetNodeGuid: 10e79769-04c6-44af-8654-9aec69587de7
+  DialogueChoiceNodeDatas:
+  - NodeGuid: dc58941c-68ea-4038-a437-3b9e243e033f
+    Position: {x: 361, y: 168}
+    DialogueNodePorts:
+    - InputGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
+      OutputGuid: dc58941c-68ea-4038-a437-3b9e243e033f
+      TextLanguage:
+      - languageEnum: 0
+        LanguageGenericType: Purchase Accessories
+      - languageEnum: 1
+        LanguageGenericType: Choice 01
+    - InputGuid: 10e79769-04c6-44af-8654-9aec69587de7
+      OutputGuid: dc58941c-68ea-4038-a437-3b9e243e033f
+      TextLanguage:
+      - languageEnum: 0
+        LanguageGenericType: Purchase Shirts
+      - languageEnum: 1
+        LanguageGenericType: Choice 02
+    AudioClips:
+    - languageEnum: 0
+      LanguageGenericType: {fileID: 0}
+    - languageEnum: 1
+      LanguageGenericType: {fileID: 0}
+    Character: {fileID: 0}
+    AvatarPos: 0
+    AvatarType: 0
+    TextType:
+    - languageEnum: 0
+      LanguageGenericType: How can I help you?
+    - languageEnum: 1
+      LanguageGenericType: 
+    Duration: 0
   DialogueNodeDatas:
   - NodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
-    Position: {x: 35, y: 167}
+    Position: {x: 35, y: 168}
     DialogueNodePorts: []
     AudioClips:
     - languageEnum: 0
@@ -38,7 +73,12 @@ MonoBehaviour:
     Duration: 1
   EndNodeDatas:
   - NodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
-    Position: {x: 305, y: 262}
+    Position: {x: 839, y: -8}
+    ReturnValue: 1
+    EndNodeType: 0
+  - NodeGuid: 10e79769-04c6-44af-8654-9aec69587de7
+    Position: {x: 846, y: 245}
+    ReturnValue: 2
     EndNodeType: 0
   StartNodeDatas:
   - NodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de

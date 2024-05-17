@@ -40,6 +40,7 @@ MonoBehaviour:
   EndNodeDatas:
   - NodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
     Position: {x: 305, y: 262}
+    ReturnValue: 0
     EndNodeType: 0
   StartNodeDatas:
   - NodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de

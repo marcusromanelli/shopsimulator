@@ -17,10 +17,6 @@ MonoBehaviour:
     TargetNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
   - BaseNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
     TargetNodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
-  - BaseNodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de
-    TargetNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
-  - BaseNodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3
-    TargetNodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
   DialogueChoiceNodeDatas: []
   DialogueNodeDatas:
   - NodeGuid: 3c9f4460-8e02-4e45-b379-fe615c9956c3

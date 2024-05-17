@@ -21,7 +21,7 @@ public class DialogueEvent : Event
         DialogueManager.Instance.StartDialogue(dialogue);
     }
 
-    void OnFinishDialogue()
+    void OnFinishDialogue(int returnValue)
     {
         DialogueManager.Instance.EndDialogueEvent.RemoveListener(OnFinishDialogue);
 

@@ -14,7 +14,7 @@ namespace MEET_AND_TALK
         public AudioSource audioSource;
 
         public UnityEvent StartDialogueEvent;
-        public UnityEvent EndDialogueEvent;
+        public UnityEvent<int> EndDialogueEvent;
 
         private BaseNodeData currentDialogueNodeData;
         private BaseNodeData lastDialogueNodeData;
@@ -157,7 +157,7 @@ namespace MEET_AND_TALK
             {
                 case EndNodeType.End:
                     dialogueUIManager.dialogueCanvas.SetActive(false);
-                    EndDialogueEvent.Invoke();
+                    EndDialogueEvent.Invoke(_nodeData.ReturnValue);
                     break;
                 case EndNodeType.Repeat:
                     CheckNodeType(GetNodeByGuid(currentDialogueNodeData.NodeGuid));
@@ -218,7 +218,7 @@ namespace MEET_AND_TALK
         public void ForceEndDialog()
         {
             dialogueUIManager.dialogueCanvas.SetActive(false);
-            EndDialogueEvent.Invoke();
+            EndDialogueEvent.Invoke(-1);
         }
     }
 }

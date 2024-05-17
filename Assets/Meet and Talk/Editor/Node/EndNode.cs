@@ -12,8 +12,11 @@ namespace MEET_AND_TALK
     {
         private EndNodeType endNodeType = EndNodeType.End;
         private EnumField enumField;
+        private IntegerField returnValueField;
+        private int returnValue = -1;
 
         public EndNodeType EndNodeType { get => endNodeType; set => endNodeType = value; }
+        public int ReturnValue { get => returnValue; set => returnValue = value; }
 
         public EndNode()
         {
@@ -45,11 +48,24 @@ namespace MEET_AND_TALK
             enumField.SetValueWithoutNotify(endNodeType);
 
             mainContainer.Add(enumField);
+
+
+
+            returnValueField = new IntegerField("");
+            returnValueField.RegisterValueChangedCallback(value =>
+            {
+                returnValue = value.newValue;
+            });
+            returnValueField.SetValueWithoutNotify(returnValue);
+
+            returnValueField.AddToClassList("ReturnValue");
+            mainContainer.Add(returnValueField);
         }
 
         public override void LoadValueInToField()
         {
             enumField.SetValueWithoutNotify(endNodeType);
+            returnValueField.SetValueWithoutNotify(returnValue);
         }
     }
 }
