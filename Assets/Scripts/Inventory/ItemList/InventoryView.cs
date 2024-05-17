@@ -45,8 +45,14 @@ public class InventoryView : MonoBehaviour
     private void OnDisable()
     {
         if (itemObjects != null)
+        {
             foreach (var currencyObject in itemObjects)
                 GetPool().Release(currencyObject);
+
+            itemObjects.Clear();
+        }
+
+
     }
 
     private void InstantiateObject(string itemId, GetItemData onGetItemData)

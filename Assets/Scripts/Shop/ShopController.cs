@@ -71,6 +71,7 @@ public class ShopController : Singleton<ShopController>
     void OnClosedShop()
     {
         OnCloseShop?.Invoke();
+        shopView.OnPurchased.RemoveAllListeners();
     }
     void UpdateShopDialogue(string text)
     {

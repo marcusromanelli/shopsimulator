@@ -4101,6 +4101,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 302b3b62d400e06488294c8d5d61fd4a, type: 2}
   - {fileID: 11400000, guid: 3c10b956f92319240ab077b7d923f128, type: 2}
   - {fileID: 11400000, guid: e9454babc5da6204bbb7fb49ecfb4545, type: 2}
+  - {fileID: 11400000, guid: 230c3f35ee81bdf4a89de09132fd965f, type: 2}
+  - {fileID: 11400000, guid: bde4f0848f65686458fe36887e0ce956, type: 2}
+  - {fileID: 11400000, guid: b5db3c998febb30448ef877f4ca3301c, type: 2}
+  - {fileID: 11400000, guid: 9e4abc9498970c44f8bffea9436cd7fb, type: 2}
 --- !u!1 &941345356
 GameObject:
   m_ObjectHideFlags: 0
@@ -12356,7 +12360,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1983265377
 GameObject:

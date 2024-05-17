@@ -17,7 +17,6 @@ public class ShopViewObject : MonoBehaviour, IPoolable
 
     private void Awake()
     {
-        button.onClick.AddListener(OnClickedPurchase);
     }
     public void Setup(ShopItem item)
     {
@@ -25,8 +24,10 @@ public class ShopViewObject : MonoBehaviour, IPoolable
         itemName.text = item.GetName();
         itemValue.text = item.GetCostData().amount.ToString();
         currencyIcon.sprite = item.GetCostData().currency.GetIcon();
+        button.onClick.AddListener(OnClickedPurchase);
 
         this.item = item;
+        gameObject.SetActive(true);
     }
 
     void OnClickedPurchase()
@@ -46,8 +47,13 @@ public class ShopViewObject : MonoBehaviour, IPoolable
 
     public void OnDisabled()
     {
+        itemName.text = string.Empty;
+        itemImage.sprite = null;
         item = null;
         OnClickPurchase.RemoveAllListeners();
+        button.onClick.RemoveAllListeners();
+
+        gameObject.SetActive(false);
     }
 
     public void Destroy()

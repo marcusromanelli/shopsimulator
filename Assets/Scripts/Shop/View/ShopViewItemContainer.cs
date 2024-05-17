@@ -35,6 +35,8 @@ public class ShopViewItemContainer : MonoBehaviour
     {
         foreach(var item in itemObjects)
             shopItemPool.Release(item);
+
+        itemObjects.Clear();
     }
     void Initialize()
     {
@@ -60,5 +62,13 @@ public class ShopViewItemContainer : MonoBehaviour
         }
 
         onPurchase?.Invoke(item);
+    }
+
+    private void OnDisable()
+    {
+        foreach(var item in itemObjects)
+            shopItemPool.Release(item);
+
+        itemObjects.Clear();
     }
 }

@@ -17,7 +17,6 @@ public class GenericPool<T> where T: MonoBehaviour, IPoolable
     }
     public void Release(T obj)
     {
-        obj.transform.parent.SetParent(null);
         m_Pool.Release(obj);
     }
 

@@ -41,6 +41,8 @@ public class ShopView : MonoBehaviour
     public void Close()
     {
         OnClosed?.Invoke();
+        itemContainerView.Close();
+        currencyContainer.Close();
         CloseWindow();
     }
 
@@ -64,6 +66,7 @@ public class ShopView : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+        itemContainerView.onPurchase.RemoveAllListeners();
     }
 
     void OpenWindow()

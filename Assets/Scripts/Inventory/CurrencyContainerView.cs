@@ -49,11 +49,12 @@ public class CurrencyContainerView : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    public void Close()
     {
-        if(currencyObjects != null)
-            foreach (var currencyObject in currencyObjects)
-                GetPool().Release(currencyObject);
+        foreach (var currency in currencyObjects)
+            GetPool().Release(currency);
+
+        currencyObjects.Clear();
     }
 
     private void InstantiateCurrencyObject(CurrencyData currency, GetCurrencyAmount onGetCurrencyAmount)
