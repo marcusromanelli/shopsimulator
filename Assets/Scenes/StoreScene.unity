@@ -3203,7 +3203,17 @@ MonoBehaviour:
   OnCurrencyChanges:
     m_PersistentCalls:
       m_Calls: []
+  hairAnimation: {fileID: 2324275}
+  armsAnimation: {fileID: 1166109557}
   accessAnimation: {fileID: 1622512279}
+  shirtsAnimation: {fileID: 1080932107}
+  inventory:
+    Accessory:
+      itemId: -1
+    Shirt:
+      itemId: -1
+    Hair:
+      itemId: 2c03e138-75dd-4b13-9924-d97ef954795e
 --- !u!114 &531329227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4105,6 +4115,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bde4f0848f65686458fe36887e0ce956, type: 2}
   - {fileID: 11400000, guid: b5db3c998febb30448ef877f4ca3301c, type: 2}
   - {fileID: 11400000, guid: 9e4abc9498970c44f8bffea9436cd7fb, type: 2}
+  - {fileID: 11400000, guid: f4ed1418dfbba4447883c0c40836fbec, type: 2}
+  - {fileID: 11400000, guid: fbea7fb385339f048be32e2859f67114, type: 2}
+  - {fileID: 11400000, guid: 73cee527c0b24b44a805b64a9e2e503a, type: 2}
+  - {fileID: 11400000, guid: 7240784217fa9714a8a4dac299ed4cd9, type: 2}
 --- !u!1 &941345356
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.U2D;
+using static UnityEditor.Progress;
 
 [ExecuteInEditMode]
 public class HairAnimation : MonoBehaviour
@@ -30,6 +31,17 @@ public class HairAnimation : MonoBehaviour
         LoadHair();
     }
 
+    public void SetHair(ShopItem hair)
+    {
+        if (hair == null)
+            hairIndex = -1;
+        else
+            hairIndex = hair.GetInternalId();
+
+        lastSelectedHairIndex = hairIndex;
+
+        LoadHair();
+    }
     void LoadHair()
     {
         var spriteName = GetSpriteName(lastDirection, hairIndex);

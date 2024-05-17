@@ -17,7 +17,7 @@ public class AccessoryAnimation : MonoBehaviour
     [SerializeField] private SpriteAtlas accessorySpriteAtlas;
 
 
-    private int lastSelectedAccIndex;
+    private int lastSelectedAccIndex = -1;
 
     Vector2 lastDirection;
     private void Awake()
@@ -27,7 +27,10 @@ public class AccessoryAnimation : MonoBehaviour
 
     public void EquipItem(ShopItem item)
     {
-        accessoryIndex = item.GetInternalId();
+        if (item == null)
+            accessoryIndex = -1;
+        else
+            accessoryIndex = item.GetInternalId();
 
         LoadAccess();
     }

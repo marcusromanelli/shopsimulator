@@ -21,6 +21,8 @@ MonoBehaviour:
     TargetNodeGuid: b5510176-20f2-4fa1-8161-0daee9fe5083
   - BaseNodeGuid: dc58941c-68ea-4038-a437-3b9e243e033f
     TargetNodeGuid: 10e79769-04c6-44af-8654-9aec69587de7
+  - BaseNodeGuid: dc58941c-68ea-4038-a437-3b9e243e033f
+    TargetNodeGuid: 38f6f0b1-edc1-42bd-88c8-f415a0c7cacd
   DialogueChoiceNodeDatas:
   - NodeGuid: dc58941c-68ea-4038-a437-3b9e243e033f
     Position: {x: 361, y: 168}
@@ -39,6 +41,13 @@ MonoBehaviour:
         LanguageGenericType: Purchase Shirts
       - languageEnum: 1
         LanguageGenericType: Choice 02
+    - InputGuid: 38f6f0b1-edc1-42bd-88c8-f415a0c7cacd
+      OutputGuid: dc58941c-68ea-4038-a437-3b9e243e033f
+      TextLanguage:
+      - languageEnum: 0
+        LanguageGenericType: Get my hair done
+      - languageEnum: 1
+        LanguageGenericType: Choice 03
     AudioClips:
     - languageEnum: 0
       LanguageGenericType: {fileID: 0}
@@ -79,6 +88,10 @@ MonoBehaviour:
   - NodeGuid: 10e79769-04c6-44af-8654-9aec69587de7
     Position: {x: 846, y: 245}
     ReturnValue: 2
+    EndNodeType: 0
+  - NodeGuid: 38f6f0b1-edc1-42bd-88c8-f415a0c7cacd
+    Position: {x: 839, y: 423}
+    ReturnValue: 3
     EndNodeType: 0
   StartNodeDatas:
   - NodeGuid: 62454dc8-744b-4674-802a-8a58c30bd5de

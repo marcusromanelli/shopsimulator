@@ -23,12 +23,15 @@ public class PlayerInventory : MonoBehaviour
 
     public UnityEvent<CurrencyData, int> OnCurrencyChanges;
 
+    [SerializeField] private HairAnimation hairAnimation;
+    [SerializeField] private CharacterAnimation armsAnimation;
     [SerializeField] private AccessoryAnimation accessAnimation;
     [SerializeField] private ShirtsAnimation shirtsAnimation;
+    [SerializeField] private InventoryData inventory;
 
     private Dictionary<string, int> currencyList;
     private List<string> itemList;
-    private InventoryData inventory;
+    
 
     private Dictionary<string, CurrencyData> cachedCurrencyData = new Dictionary<string, CurrencyData>();
 
@@ -37,17 +40,31 @@ public class PlayerInventory : MonoBehaviour
         itemList = new List<string>();
         currencyList = new Dictionary<string, int>();
 
-        accessAnimation = GetComponentInChildren<AccessoryAnimation>();
-        shirtsAnimation = GetComponentInChildren<ShirtsAnimation>();
+        hairAnimation.SetHair(ItemManager.Instance.GetElementData(inventory.Hair.itemId));
+        accessAnimation.EquipItem(ItemManager.Instance.GetElementData(inventory.Accessory.itemId));
+        shirtsAnimation.EquipItem(ItemManager.Instance.GetElementData(inventory.Shirt.itemId));
     }
-    public void AddItem(string guid)
+    public void AddItem(string itemId)
     {
-        itemList.Add(guid);
+        var item = ItemManager.Instance.GetElementData(itemId);
+
+        if(item.GetType() == ShopController.ItemType.Hair)
+        {
+            EquipItem(item);
+            return;
+        }
+
+        itemList.Add(itemId);
     }
 
-    public void RemoveItem(string guid)
+    public void RemoveItem(string itemId)
     {
-        itemList.Remove(guid);
+        var item = ItemManager.Instance.GetElementData(itemId);
+
+        if (item.GetType() == ShopController.ItemType.Hair)
+            return;
+
+        itemList.Remove(itemId);
     }
 
     public List<string> GetItemList()
@@ -123,10 +140,16 @@ public class PlayerInventory : MonoBehaviour
         switch (item.GetType())
         {
             case ShopController.ItemType.Accessory:
+                inventory.Accessory.itemId = item.GetId();
                 accessAnimation.EquipItem(item);
                 break;
             case ShopController.ItemType.Shirt:
+                inventory.Shirt.itemId = item.GetId();
                 shirtsAnimation.EquipItem(item);
+                break;
+            case ShopController.ItemType.Hair:
+                inventory.Hair.itemId = item.GetId();
+                hairAnimation.SetHair(item);
                 break;
         }
     }

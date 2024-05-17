@@ -27,7 +27,7 @@ public class ShirtsAnimation : MonoBehaviour
     [SerializeField] private ShirtsOffset offsets;
 
 
-    private int lastSelectedAccIndex;
+    private int lastSelectedShirtIndex = -1;
 
     Vector2 lastDirection;
     private void Awake()
@@ -44,7 +44,10 @@ public class ShirtsAnimation : MonoBehaviour
 
     public void EquipItem(ShopItem item)
     {
-        shirtIndex = item.GetInternalId();
+        if (item == null)
+            shirtIndex = -1;
+        else
+            shirtIndex = item.GetInternalId();
 
         LoadShirt();
     }
@@ -88,15 +91,15 @@ public class ShirtsAnimation : MonoBehaviour
         {
             if (direction.y < 0)
             {
-                lastSelectedAccIndex = realIndex;
-                stringBuilder.Append(lastSelectedAccIndex);
+                lastSelectedShirtIndex = realIndex;
+                stringBuilder.Append(lastSelectedShirtIndex);
 
                 return stringBuilder.ToString();
             }
             else
             {
-                lastSelectedAccIndex = realIndex + maxColumnCount * 3;
-                stringBuilder.Append(lastSelectedAccIndex);
+                lastSelectedShirtIndex = realIndex + maxColumnCount * 3;
+                stringBuilder.Append(lastSelectedShirtIndex);
 
                 return stringBuilder.ToString();
             }
@@ -104,13 +107,13 @@ public class ShirtsAnimation : MonoBehaviour
 
         if (direction.x != 0)
         {
-            lastSelectedAccIndex = realIndex + maxColumnCount;
-            stringBuilder.Append(lastSelectedAccIndex);
+            lastSelectedShirtIndex = realIndex + maxColumnCount;
+            stringBuilder.Append(lastSelectedShirtIndex);
 
             return stringBuilder.ToString();
         }
 
-        stringBuilder.Append(lastSelectedAccIndex);
+        stringBuilder.Append(lastSelectedShirtIndex);
 
         return stringBuilder.ToString();
     }

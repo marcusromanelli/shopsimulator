@@ -8,7 +8,8 @@ public class ShopController : Singleton<ShopController>
     public enum ItemType
     {
         Accessory,
-        Shirt
+        Shirt,
+        Hair
     }
 
     public delegate bool CanPurchaseItem(ShopItem shopItem);

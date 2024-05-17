@@ -13,12 +13,15 @@ public class CharacterAnimation : MonoBehaviour
     {
         playerMovement.onPlayerMoved += OnPlayerMoved;
         playerMovement.onPlayerStoppedMoving += OnPlayerStoppedMoving;
+
+        OnPlayerMoved(Vector2.up);
     }
 
     void Start()
     {
         
     }
+
 
     void OnPlayerMoved(Vector2 direction)
     {
