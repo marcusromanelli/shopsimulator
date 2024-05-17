@@ -24,6 +24,7 @@ public class PlayerInventory : MonoBehaviour
     public UnityEvent<CurrencyData, int> OnCurrencyChanges;
 
     [SerializeField] private AccessoryAnimation accessAnimation;
+    [SerializeField] private ShirtsAnimation shirtsAnimation;
 
     private Dictionary<string, int> currencyList;
     private List<string> itemList;
@@ -37,6 +38,7 @@ public class PlayerInventory : MonoBehaviour
         currencyList = new Dictionary<string, int>();
 
         accessAnimation = GetComponentInChildren<AccessoryAnimation>();
+        shirtsAnimation = GetComponentInChildren<ShirtsAnimation>();
     }
     public void AddItem(string guid)
     {
@@ -122,6 +124,9 @@ public class PlayerInventory : MonoBehaviour
         {
             case ShopController.ItemType.Accessory:
                 accessAnimation.EquipItem(item);
+                break;
+            case ShopController.ItemType.Shirt:
+                shirtsAnimation.EquipItem(item);
                 break;
         }
     }

@@ -42,6 +42,12 @@ public class ShirtsAnimation : MonoBehaviour
         LoadShirt();
     }
 
+    public void EquipItem(ShopItem item)
+    {
+        shirtIndex = item.GetInternalId();
+
+        LoadShirt();
+    }
     void LoadShirt()
     {
         var spriteName = GetSpriteName(lastDirection, shirtIndex);
