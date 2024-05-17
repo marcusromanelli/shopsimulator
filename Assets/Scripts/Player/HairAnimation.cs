@@ -1,7 +1,6 @@
 using System.Text;
 using UnityEngine;
 using UnityEngine.U2D;
-using static UnityEditor.Progress;
 
 [ExecuteInEditMode]
 public class HairAnimation : MonoBehaviour
