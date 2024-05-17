@@ -16,6 +16,6 @@ public class InventoryEvent : Event
     {
         playerController.OnInventoryClosed.RemoveListener(OnFinish);
 
-        onFinish?.Invoke(-1);
+        onFinish?.Invoke(0);
     }
 }

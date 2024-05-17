@@ -21,6 +21,6 @@ public class LockInputEvent : Event
         else
             playerController.DisableInput();
 
-        onFinish?.Invoke(-1);
+        onFinish?.Invoke(0);
     }
 }

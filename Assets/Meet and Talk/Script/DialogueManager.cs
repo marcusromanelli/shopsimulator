@@ -218,7 +218,7 @@ namespace MEET_AND_TALK
         public void ForceEndDialog()
         {
             dialogueUIManager.dialogueCanvas.SetActive(false);
-            EndDialogueEvent.Invoke(-1);
+            EndDialogueEvent.Invoke(0);
         }
     }
 }

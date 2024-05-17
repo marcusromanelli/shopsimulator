@@ -26,7 +26,7 @@ public class ShopEvent : Event
 
     void OnFinishEvent()
     {
-        onFinish?.Invoke(-1);
+        onFinish?.Invoke(0);
 
         ShopController.Instance.OnCloseShop.RemoveListener(OnFinishEvent);
     }

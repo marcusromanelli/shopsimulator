@@ -17,6 +17,6 @@ public class PlayerMovementEvent : Event
 
     void OnFinishMovement()
     {
-        onFinish?.Invoke(-1);
+        onFinish?.Invoke(0);
     }
 }

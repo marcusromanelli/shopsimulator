@@ -13,7 +13,7 @@ namespace MEET_AND_TALK
         private EndNodeType endNodeType = EndNodeType.End;
         private EnumField enumField;
         private IntegerField returnValueField;
-        private int returnValue = -1;
+        private int returnValue = 0;
 
         public EndNodeType EndNodeType { get => endNodeType; set => endNodeType = value; }
         public int ReturnValue { get => returnValue; set => returnValue = value; }

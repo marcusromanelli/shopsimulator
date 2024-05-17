@@ -17,6 +17,6 @@ public class AddCurrencyEvent : Event
 
         playerController.AddCurrency(currencyData, amount);
 
-        onFinish?.Invoke(-1);
+        onFinish?.Invoke(0);
     }
 }
